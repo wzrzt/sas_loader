@@ -38,3 +38,6 @@ End
 End Sub
 
 Private Sub Timer2_Timer()
+a = a - 1
+Label2.Caption = a
+End Sub
