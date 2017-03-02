@@ -1,0 +1,46 @@
+Shell "D:\Program Files\SASHome\SASFoundation\9.4\sas.exe", vbNormalFocus  '打开某exe
+
+
+Dim d, t, a, c
+Dim e As Integer
+
+
+Private Sub Form_Load()
+Me.Top = 1200
+Me.Left = 1500
+a = 10
+d = Date
+t = format(now,"HHmmss")
+Label4.Caption = "今天是": Label5.Caption = d
+If Dir(App.Path & "\sas.exe") <> "" Then '存在
+Date = "2014-02-01"
+Shell App.Path & "\sas.exe", vbNormalFocus  '打开某exe
+Else
+Me.Visible = True
+Label6.Caption = "sas.exe找不到，请检查路径"
+e = MsgBox("请将此文件放于sas安装目录中的sas.exe旁边!", vbOKOnly, "ERROR")
+
+End If
+
+
+
+'要执行的代码
+
+Timer1.Interval = 5000
+Timer2.Interval = 1000
+
+   End Sub
+ 
+Private Sub Timer1_Timer()
+If t >= "23:59:50" Then d = d + 1
+If Date <> d Then Date = d
+
+Timer2.Interval = 0
+End
+End Sub
+
+Private Sub Timer2_Timer()
+a = a - 1
+Label2.Caption = a
+End Sub
+
